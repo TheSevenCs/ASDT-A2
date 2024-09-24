@@ -27,6 +27,7 @@ int main() {
         std::istringstream ss(line);
         std::string firstName, lastName;
 
+
         if (std::getline(ss, firstName, ',') && std::getline(ss, lastName)) {
             firstName.erase(0, firstName.find_first_not_of(" \n\r\t"));
             firstName.erase(firstName.find_last_not_of(" \n\r\t") + 1);
@@ -39,10 +40,14 @@ int main() {
 
     inputFile.close();
 
+
+#ifdef _DEBUG
+    // Print all student information for debugging
+    std::cout << "Loaded Student Data:\n";
     for (std::size_t i = 0; i < students.size(); ++i) {
         std::cout << "First Name: " << students[i].firstName
             << ", Last Name: " << students[i].lastName << std::endl;
     }
-
+#endif
     return 0;
 }
